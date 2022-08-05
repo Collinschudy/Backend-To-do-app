@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %} dummy-to-do {% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class=" container">
+
+        <form id="form">
+
+            <input type="text" name="description" id="description" class="input" placeholder="Enter task here..."/>
+            <input type="submit" value="Add Task" class="submit" />
+
+
+
+
+        </form>
+        <div id="Error" class="hidden">Something went wrong</div>
+        <ul class="list" id="todos">
+            {% for d in data %}
+            <li class="child">
+                <input data-id="{{ d.id }}" type="checkbox" class="check-comp" {% if d.completed %} checked {% endif
+                    %} />
+                {{ d.description }}
+                <button data-id="{{ d.id }}" class="button">&cross;</button>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="/static/index.js"></script>
+
+</body>
+
+</html>
